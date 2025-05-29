@@ -18,7 +18,7 @@ class DriverLicenseUpdateForm(UserChangeForm):
 
         if len(license_number) != 8:
             raise ValidationError("License number must be 8 digits")
-        elif not license_number[:3].isupper():
+        elif not license_number[:3].isupper() and license_number[:3].isalpha():
             raise ValidationError("First 3 symbols must be uppercase")
         elif not license_number[-5:].isdigit():
             raise ValidationError("Last 5 symbols must be digits")
